@@ -1,4 +1,4 @@
-import {fetchWeatherData} from "../api"
+import {fetchWeatherData ,fetchWeatherDataforlocation} from "../api"
 
 import {createContext,useState, useContext} from "react";
 
@@ -18,8 +18,23 @@ export const WeatherProvider =(props)=>{
         const response=await fetchWeatherData(searchcity);
         setData(response);
     };
+
+    const fetchlocationdata =async()=>{
+        navigator.geolocation.getCurrentPosition((position)=>{
+            fetchWeatherDataforlocation(
+                position.coords.lalitude,
+                position.coords.longitude
+            ).then(data=>setData(data));
+
+            // console.log(position);
+        })
+
+    }
     return (
-    <WeatherContext.Provider value={{searchcity,data,setSearchcity,fetchdata}}>
+    <WeatherContext.Provider value={{searchcity,data,
+    setSearchcity,
+    fetchdata,
+    fetchlocationdata}}>
         {props.children}
         </WeatherContext.Provider>
     );

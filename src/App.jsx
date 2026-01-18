@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 import  Card from './component/Card'
 import  Input  from './component/Input'
 import Button  from './component/Button'
@@ -9,6 +10,14 @@ import {useWeather} from "./context/Weather";
 function App() {
  const weather=useWeather();
  console.log(weather);
+
+ useEffect(()=>{
+  //get current location
+  //
+
+
+  weather.fetchlocationdata();
+ },[]);
 
   return (
     <>

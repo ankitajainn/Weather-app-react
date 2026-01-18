@@ -4,6 +4,13 @@ export const fetchWeatherData = async (city) => {
     return await response.json();
 };
 
+export const fetchWeatherDataforlocation = async (lat,lon) => {
+    const response =await fetch(`${baseUrl}&q=${lat},${lon}&aqi=yes`);
+    return await response.json();
+};
+
+
+
 // const baseUrl = "https://api.weatherapi.com/v1/current.json?key=4903856dba31462db1790248250511";
 
 // export const fetchWeatherData = async (city) => {
